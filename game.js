@@ -30,7 +30,7 @@ $(".btn").click(function () {
 
 function nextSequence() {
 
-  userClickedPattern=[];
+  userClickedPattern = [];
   level++;
   $("#level-title").text("Level " + level);
   var randomNumber = Math.floor(Math.random() * 4);
@@ -71,10 +71,17 @@ function checkAnswer(currentLevel) {
   } else {
 
     console.log("wrong");
-    var audio=new Audio("sounds/wrong.mp3");
+    var audio = new Audio("sounds/wrong.mp3");
     audio.play();
     $("body").addClass("game-over");
-    setTimeout(function(){$("body").removeClass("game-over");},200)
+    setTimeout(function () { $("body").removeClass("game-over"); }, 200)
     $("#level-title").text("Game Over, Press Any Key to Restart");
+    startOver();
   }
+}
+
+function startOver() {
+  level = 0;
+  gamePattern = [];
+  started = false;
 }
